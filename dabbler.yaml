@@ -37,8 +37,7 @@ testing:
   # machine: `{msbuild}` is filled in when the control runs, and the record
   # says which MSBuild it was.
   controls:
-    - name: compile
-      kind: compile
+    - kind: compile
       command: '{msbuild} "Store.sln" /restore /t:Build /p:RestorePackagesConfig=true /p:Configuration=Debug /v:minimal /nologo'
       required: true
 
