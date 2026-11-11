@@ -77,3 +77,35 @@ packaging.
 
 > Do NOT hand-author `sessions.json`. The first `session start`
 > bootstraps it from this plan — state files are the writers' job.
+
+### Session 3: The calculator page and the first tests
+
+1. Register.
+2. Add `Store.Service/CalculatorService.cs`, a `CalculatorService` with
+   `Add` and `Subtract`, each taking two decimals and returning a decimal,
+   listed in `Store.Service.csproj` as a `Compile` item.
+3. Add `Store.Web/Controllers/CalculatorController.cs` (GET `Index` shows
+   the form; POST `Index` shows the sum and difference through the
+   service) and `Store.Web/Views/Calculator/Index.cshtml`, listed in
+   `Store.Web.csproj` as `Compile` and `Content` items, and a Calculator
+   link in `Store.Web/Views/Shared/_Layout.cshtml`.
+4. Add the non-SDK MSTest project
+   `Store.Service.Tests/Store.Service.Tests.csproj` at v4.5.1 with its
+   `packages.config` (MSTest.TestFramework and MSTest.TestAdapter), a
+   project reference to Store.Service, and
+   `Store.Service.Tests/CalculatorServiceTests.cs` testing `Add` and
+   `Subtract`, each listed in the project; add the project to `Store.sln`.
+5. Declare the `dotnet-framework` suite in `dabbler.yaml`: vstest over the
+   test assembly, run whole, with `CalculatorServiceTests` named by the
+   repository's test glob.
+
+### Session 4: Documentation comments on the calculator
+
+1. Register.
+2. Add XML documentation comments to `CalculatorService`, `Add` and
+   `Subtract`, and to `CalculatorController` and both `Index` actions. No
+   code line changes.
+3. Add a Razor comment at the top of
+   `Store.Web/Views/Calculator/Index.cshtml` saying what the page is. No
+   markup changes. The compile control's MSBuild build and the vstest
+   suite still pass.
