@@ -28,11 +28,22 @@ posture: maintenance  # 44 tracked source or build file(s) when bootstrap ran (S
 #         test_roots: [tests]
 #         test_glob: "test_*.py"
 
-# dotnet-framework: no test project vstest or Fixie's console can run was
-# found -- one needs an xunit, NUnit or MSTest adapter package, or Fixie in
-# packages.config -- so no suite is declared, and the compile control
-# below proves the build.
 testing:
+  # vstest from the Visual Studio installation vswhere names, over the MSTest
+  # project Store.Service.Tests, whose adapter package makes it discoverable.
+  # The compile control builds the assembly before the suite runs.
+  suites:
+    - name: dotnet-framework
+      command: '{vstest} "Store.Service.Tests\bin\Debug\Store.Service.Tests.dll" "/logger:console;verbosity=minimal"'
+      expensive: true
+      covers:
+        - "."
+      test_roots:
+        - "."
+      test_glob: ["*Test.cs", "*Tests.cs"]
+      test_name: ["{name}Test.cs", "{name}Tests.cs"]
+      select: '{vstest} "Store.Service.Tests\bin\Debug\Store.Service.Tests.dll" "/logger:console;verbosity=minimal" /TestCaseFilter:FullyQualifiedName~{names}'
+      select_separator: "|FullyQualifiedName~"
   # MSBuild from the Visual Studio installation vswhere names on this
   # machine: `{msbuild}` is filled in when the control runs, and the record
   # says which MSBuild it was.
