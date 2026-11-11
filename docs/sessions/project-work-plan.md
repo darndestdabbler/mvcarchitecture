@@ -15,7 +15,7 @@ The numbered sessions are declared from `session-plan.md`; each one's task is wh
 | 1 | Author or import the change plan | no | 2026-11-10 |
 | 2 | Break the change plan into numbered sessions | no | 2026-11-10 |
 | 3 | The calculator page and the first tests | no | 2026-11-10 |
-| 4 | Documentation comments on the calculator | — | not declared |
+| 4 | Documentation comments on the calculator | no | 2026-11-10 |
 
 ### Session 1 — Author or import the change plan
 
@@ -34,3 +34,9 @@ Session 2 appends two numbered sessions to docs/sessions/session-plan.md from do
 **Releasable: no.**
 
 Session 3 adds an online calculator page and the repository's first tests to mvcarchitecture inside its existing shape, at .NET Framework 4.5.1: Store.Service/CalculatorService.cs (ICalculatorService and CalculatorService with Add and Subtract, registered by the existing *Service convention), Store.Web/Controllers/CalculatorController.cs (GET and POST Index through the service) and Store.Web/Views/Calculator/Index.cshtml, each listed in its .csproj, a Calculator link in the layout; the non-SDK MSTest project Store.Service.Tests (ToolsVersion 12.0 like its siblings, v4.5.1, packages.config with MSTest.TestFramework and MSTest.TestAdapter 2.2.10, a project reference to Store.Service) with CalculatorServiceTests.cs, listed in Store.sln; and its dotnet-framework suite in dabbler.yaml, vstest over the test assembly with a TestCaseFilter select. Each step is shown by the compile control's own MSBuild command, and the tests by vstest.
+
+### Session 4 — Documentation comments on the calculator
+
+**Releasable: no.**
+
+Session 4 adds documentation comments to what session 3 added and changes nothing else: XML documentation comments on ICalculatorService, CalculatorService and their Add and Subtract in Store.Service/CalculatorService.cs and on CalculatorController, its constructor and both Index actions in Store.Web/Controllers/CalculatorController.cs, and a Razor comment at the top of Store.Web/Views/Calculator/Index.cshtml. Each step is shown by the compile control's MSBuild command and by a check that the diff of its files against HEAD only adds comment lines.

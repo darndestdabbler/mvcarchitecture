@@ -22,6 +22,13 @@
       "dateTime": "2026-11-10T19:23:02.966000-05:00",
       "task": "Session 3 adds an online calculator page and the repository's first tests to mvcarchitecture inside its existing shape, at .NET Framework 4.5.1: Store.Service/CalculatorService.cs (ICalculatorService and CalculatorService with Add and Subtract, registered by the existing *Service convention), Store.Web/Controllers/CalculatorController.cs (GET and POST Index through the service) and Store.Web/Views/Calculator/Index.cshtml, each listed in its .csproj, a Calculator link in the layout; the non-SDK MSTest project Store.Service.Tests (ToolsVersion 12.0 like its siblings, v4.5.1, packages.config with MSTest.TestFramework and MSTest.TestAdapter 2.2.10, a project reference to Store.Service) with CalculatorServiceTests.cs, listed in Store.sln; and its dotnet-framework suite in dabbler.yaml, vstest over the test assembly with a TestCaseFilter select. Each step is shown by the compile control's own MSBuild command, and the tests by vstest.",
       "releasable": false
+    },
+    {
+      "kind": "task-declaration",
+      "sessionNumber": 4,
+      "dateTime": "2026-11-10T19:26:39.723000-05:00",
+      "task": "Session 4 adds documentation comments to what session 3 added and changes nothing else: XML documentation comments on ICalculatorService, CalculatorService and their Add and Subtract in Store.Service/CalculatorService.cs and on CalculatorController, its constructor and both Index actions in Store.Web/Controllers/CalculatorController.cs, and a Razor comment at the top of Store.Web/Views/Calculator/Index.cshtml. Each step is shown by the compile control's MSBuild command and by a check that the diff of its files against HEAD only adds comment lines.",
+      "releasable": false
     }
   ]
 }
