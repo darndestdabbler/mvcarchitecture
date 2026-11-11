@@ -70,9 +70,9 @@
     {
       "number": 4,
       "title": "Documentation comments on the calculator",
-      "status": "in-progress",
+      "status": "complete",
       "startedAt": "2026-11-10T19:26:38.299000-05:00",
-      "completedAt": null,
+      "completedAt": "2026-11-10T19:27:56.264000-05:00",
       "orchestrator": {
         "engine": "claude-code",
         "provider": "anthropic",
